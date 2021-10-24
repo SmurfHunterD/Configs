@@ -97,6 +97,19 @@ layouts = [
      #layout.Zoomy(),
 ]
 
+###########Define Colors############
+
+##### #700B97 ######
+##### #4E9F3D ######
+##### #1597E5 ######
+##### #F78812 ######
+##### #911F27 ######
+##### #F037A5 ######
+##### #865439 ######
+##### #64C9CF ######
+##### #FAFF00 ######
+
+
 widget_defaults = dict(
     font='sans',
     fontsize=12,
@@ -112,9 +125,21 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.CheckUpdates(colour_have_updates="d75f5f"),
-                widget.Systray(),
+                widget.CheckUpdates(colour_have_updates="911F27"),
+                widget.TextBox(foreground="700B97",text='NET'),
+                widget.Net(foreground="700B97"),
+                widget.NetGraph(fill_color="1597E5",border_color="700B97",graph_color="700B97"),
+                widget.Spacer(length=10),
+                widget.TextBox(foreground="64C9Cf",text='RAM'),
+                widget.Memory(foreground="64C9CF"),
+                widget.Spacer(length=10),
+                widget.CPU(foreground="1597E5"),
+                widget.Spacer(length=10),
+                widget.TextBox(foreground="4E9F3d",text='TEMP'),
+                widget.ThermalSensor(foreground="4E9F3d"),
+                widget.Spacer(length=10),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Systray(),
             ],
             24,
         ),
