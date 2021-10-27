@@ -108,6 +108,7 @@ layouts = [
 ##### #865439 ######
 ##### #64C9CF ######
 ##### #FAFF00 ######
+##### #C68B59 ######
 
 
 widget_defaults = dict(
@@ -122,23 +123,43 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
+
                 widget.GroupBox(),
+                
                 widget.Prompt(),
+                
                 widget.WindowName(),
-                widget.CheckUpdates(colour_have_updates="911F27"),
+                
                 widget.TextBox(foreground="700B97",text='NET'),
+                widget.Wlan(foreground="700B97"),
                 widget.Net(foreground="700B97"),
                 widget.NetGraph(fill_color="1597E5",border_color="700B97",graph_color="700B97"),
+
                 widget.Spacer(length=10),
+                
+                widget.CPU(foreground="1597E5"),
+                widget.CPUGraph(fill_color="700B97",border_color="1597E5",graph_color="1597E5"),
+
+                widget.Spacer(length=10),
+                
                 widget.TextBox(foreground="64C9Cf",text='RAM'),
                 widget.Memory(foreground="64C9CF"),
+                widget.MemoryGraph(fill_color="700B97",border_color="64C9CF",graph_color="64C9CF"),
+
                 widget.Spacer(length=10),
-                widget.CPU(foreground="1597E5"),
+                
+                widget.TextBox(foreground="C68B59",text='DISK'),
+                widget.DF(foreground="C68B59",visible_on_warn=False),
+
                 widget.Spacer(length=10),
+
                 widget.TextBox(foreground="4E9F3d",text='TEMP'),
                 widget.ThermalSensor(foreground="4E9F3d"),
+                
                 widget.Spacer(length=10),
+                
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                
                 widget.Systray(),
             ],
             24,
