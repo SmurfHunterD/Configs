@@ -12,6 +12,8 @@ set fileformat=unix
 set encoding=utf-8
 set path+=**
 set wildmenu
+set termguicolors
+set t_ut=
 syntax on
 
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
@@ -30,7 +32,7 @@ Plug 'dense-analysis/ale'
 "       Tab Completion
 Plug 'ackyshake/VimCompletesMe'
 
-"       Priveiw colours in source code
+"       Preview colours in source code
 Plug 'ap/vim-css-color'
 
 "       Syntax Highlighting for server configs

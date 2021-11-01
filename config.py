@@ -42,7 +42,7 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod], "Return", lazy.spawn("lxterminal"), desc="Terminal Emualtor"),
+    Key([mod], "Return", lazy.spawn("miniterm"), desc="Terminal Emulator"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -97,24 +97,10 @@ layouts = [
      #layout.Zoomy(),
 ]
 
-###########Define Colors############
-
-##### #700B97 ######
-##### #4E9F3D ######
-##### #1597E5 ######
-##### #F78812 ######
-##### #911F27 ######
-##### #F037A5 ######
-##### #865439 ######
-##### #64C9CF ######
-##### #FAFF00 ######
-##### #C68B59 ######
-
-
 widget_defaults = dict(
-    font='sans',
-    fontsize=12,
-    padding=3,
+    font='Source Code Pro',
+    fontsize=11,
+    padding=1,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -122,44 +108,73 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
+                widget.CurrentLayout(foreground="95E2FF"),
 
-                widget.GroupBox(),
+                widget.GroupBox(active="95E2FF"),
                 
-                widget.Prompt(),
+                widget.Sep(linewidth=2,foreground="1597E5"),
                 
-                widget.WindowName(),
+                widget.Prompt(foreground="64C9CF"),
+
+                widget.Sep(linewidth=2,foreground="1597E5"),
                 
+                widget.WindowName(foreground="1597E5"),
+
+                widget.Sep(linewidth=2,foreground="1597E5"),
+               
+                widget.Sep(linewidth=2,foreground="700B97"),
+
+                widget.TextBox(text='📡'),
                 widget.TextBox(foreground="700B97",text='NET'),
                 widget.Wlan(foreground="700B97"),
                 widget.Net(foreground="700B97"),
                 widget.NetGraph(fill_color="1597E5",border_color="700B97",graph_color="700B97"),
 
-                widget.Spacer(length=10),
-                
+                widget.Sep(linewidth=2,foreground="700B97"),
+                widget.Sep(linewidth=2,foreground="1597E5"),
+
+                widget.TextBox(text='💻'),
                 widget.CPU(foreground="1597E5"),
                 widget.CPUGraph(fill_color="700B97",border_color="1597E5",graph_color="1597E5"),
 
-                widget.Spacer(length=10),
-                
+                widget.Sep(linewidth=2,foreground="1597E5"),
+                widget.Sep(linewidth=2,foreground="49A4D4"),
+
+                widget.TextBox(text='💾'),
+                widget.TextBox(foreground="49A4D4",text='DISK'),
+                widget.DF(foreground="49A4D4",visible_on_warn=False),
+                widget.HDDBusyGraph(fill_color="700B97",border_color="49A4D4",graph_color="49A4D4"),
+
+                widget.Sep(linewidth=2,foreground="49A4D4"),
+                widget.Sep(linewidth=2,foreground="64C9Cf"),
+
+                widget.TextBox(text='🕹️'),
                 widget.TextBox(foreground="64C9Cf",text='RAM'),
                 widget.Memory(foreground="64C9CF"),
                 widget.MemoryGraph(fill_color="700B97",border_color="64C9CF",graph_color="64C9CF"),
 
-                widget.Spacer(length=10),
-                
-                widget.TextBox(foreground="C68B59",text='DISK'),
-                widget.DF(foreground="C68B59",visible_on_warn=False),
+                widget.Sep(linewidth=2,foreground="64C9Cf"),
+                widget.Sep(linewidth=2,foreground="B7E4D6"),
 
-                widget.Spacer(length=10),
+                widget.TextBox(text='🌡'),
+                widget.TextBox(foreground="B7E4D6",text='TEMP'),
+                widget.ThermalSensor(foreground="B7E4D6"),
+                
+                widget.Sep(linewidth=2,foreground="B7E4D6"),
+                widget.Sep(linewidth=2),
 
-                widget.TextBox(foreground="4E9F3d",text='TEMP'),
-                widget.ThermalSensor(foreground="4E9F3d"),
-                
-                widget.Spacer(length=10),
-                
+                widget.TextBox(text='📆'),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 
+                widget.Sep(linewidth=2),
+
+                widget.Sep(linewidth=2),
+
+                widget.TextBox(text='🔊'),
+                widget.PulseVolume(),
+
+                widget.Sep(linewidth=2),
+
                 widget.Systray(),
             ],
             24,

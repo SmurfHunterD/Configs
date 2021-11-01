@@ -11,10 +11,6 @@ neofetch
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-alias edit='sudo vim'
-
-alias gedit='sudo geany'
-
 alias btp='btop'
 
 alias update='sudo pacman -Syy'
@@ -32,3 +28,9 @@ alias run="./a.out"
 alias clean="sudo pacman -Scc"
 
 alias anime="ani-cli"
+
+alias config.py="vim ~/.config/qtile/config.py"
+
+alias miniterm.conf="vim ~/.config/miniterm/miniterm.conf"
+
+alias firewall="sudo firewall-config"
