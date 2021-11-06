@@ -1,0 +1,30 @@
+XTerm.termName: xterm-256color
+XTerm.visualBell: off
+   
+XTerm.renderFont: false
+Xterm.font: Source Code Pro 
+XTerm*faceName: 'Source Code Pro-10'
+
+XTerm*background: black
+XTerm*foreground: #23A4FF
+XTerm*color0: #FFFFFF
+XTerm*color1: #700B97
+XTerm*color2: #0459DE
+XTerm*color3: #A309F3
+XTerm*color4: #700B97
+XTerm*color5: #113CFC
+XTerm*color6: #700B97
+XTerm*color7: #C113CF
+XTerm*color8: #1DB9C3
+XTerm*color9: #C113CF
+XTerm*color10: #A309F3
+XTerm*color11: #69DADB
+XTerm*color12: #0459DE
+XTerm*color13: #1DB9C3
+XTerm*color14: #700B97
+XTerm*color15: #A309F3
+ 
+XTerm.locale: false
+XTerm.utf8: true
+XTerm.scrollBar: false 
+

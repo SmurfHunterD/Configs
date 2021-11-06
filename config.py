@@ -81,6 +81,7 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
+
 layouts = [
      #layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
      #layout.Max(),
@@ -108,20 +109,21 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Sep(linewidth=2,foreground="95E2FF"),
+                
                 widget.CurrentLayout(foreground="95E2FF"),
 
                 widget.GroupBox(active="95E2FF"),
                 
-                widget.Sep(linewidth=2,foreground="1597E5"),
+                widget.Sep(linewidth=2,foreground="95E2FF"),
                 
-                widget.Prompt(foreground="64C9CF"),
+                widget.Prompt(foreground="49A4D4"),
 
                 widget.Sep(linewidth=2,foreground="1597E5"),
                 
                 widget.WindowName(foreground="1597E5"),
 
                 widget.Sep(linewidth=2,foreground="1597E5"),
-               
                 widget.Sep(linewidth=2,foreground="700B97"),
 
                 widget.TextBox(text='📡'),
@@ -157,21 +159,20 @@ screens = [
                 widget.Sep(linewidth=2,foreground="B7E4D6"),
 
                 widget.TextBox(text='🌡'),
-                widget.TextBox(foreground="B7E4D6",text='TEMP'),
-                widget.ThermalSensor(foreground="B7E4D6"),
+                widget.TextBox(foreground="95E2FF",text='TEMP'),
+                widget.ThermalSensor(foreground="95E2FF"),
+                
+                widget.Sep(linewidth=2,foreground="95E2FF"),
+                widget.Sep(linewidth=2,foreground="B7E4D6"),
+
+                widget.TextBox(text='🔊'),
+                widget.PulseVolume(foreground="B7E4D6"),
                 
                 widget.Sep(linewidth=2,foreground="B7E4D6"),
                 widget.Sep(linewidth=2),
 
                 widget.TextBox(text='📆'),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                
-                widget.Sep(linewidth=2),
-
-                widget.Sep(linewidth=2),
-
-                widget.TextBox(text='🔊'),
-                widget.PulseVolume(),
 
                 widget.Sep(linewidth=2),
 

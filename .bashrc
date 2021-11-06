@@ -11,13 +11,13 @@ neofetch
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-alias btp='btop'
-
 alias update='sudo pacman -Syy'
 
 alias upgrade='sudo pacman -Syyuu'
 
 alias df="df -h -x squashfs -x tmpfs -x devtmpfs"
+
+alias paur="paru"
 
 alias extip="curl icanhazip.com"
 
@@ -34,3 +34,8 @@ alias config.py="vim ~/.config/qtile/config.py"
 alias miniterm.conf="vim ~/.config/miniterm/miniterm.conf"
 
 alias firewall="sudo firewall-config"
+
+alias .vimrc="vim .vimrc"
+
+alias .bashrc="vim .bashrc"
+
