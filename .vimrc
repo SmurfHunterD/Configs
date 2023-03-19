@@ -1,4 +1,5 @@
 set number
+set relativenumber
 set tabstop=4 softtabstop=4 shiftwidth=4
 set nowrap
 set bg=light
@@ -16,36 +17,35 @@ set termguicolors
 set t_ut=
 syntax on
 
-autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
-
-
-
-
 "                   Start Plug-ins
 
 call plug#begin('~/.vim/plugged')
-
-
 "       Check and fix syntax with LSP support
 Plug 'dense-analysis/ale'
-
 "       Tab Completion
 Plug 'ackyshake/VimCompletesMe'
-
 "       Preview colours in source code
 Plug 'ap/vim-css-color'
-
 "       Syntax Highlighting for server configs
 Plug 'chr4/nginx.vim'
-
 "       Close pairs
 Plug 'seroqn/tozzy.vim'
-
+"       Nerdtree
+Plug 'preservim/nerdtree'
+"       NerdTree highlighting buffers
+Plug 'PhilRunninger/nerdtree-buffer-ops'
+"       Debugging
+Plug 'puremourning/vimspector'
 
 call plug#end()
 
 "                   End Plug-ins
 
 "                   Commands and keybindings
-
-
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufWritePost *Xresources,Xdefaults !xrdb %
+autocmd VimEnter * NERDTree | wincmd p
