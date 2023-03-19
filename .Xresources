@@ -27,4 +27,3 @@ XTerm*color15: #A309F3
 XTerm.locale: false
 XTerm.utf8: true
 XTerm.scrollBar: false 
-
