@@ -2,12 +2,11 @@
 # ~/.bashrc
 #
 
-neofetch
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#######  aliases  #######
+neofetch
+
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
@@ -27,8 +26,6 @@ alias run="./a.out"
 
 alias clean="sudo pacman -Scc"
 
-alias anime="ani-cli"
-
 alias config.py="vim ~/.config/qtile/config.py"
 
 alias miniterm.conf="vim ~/.config/miniterm/miniterm.conf"
@@ -39,3 +36,17 @@ alias .vimrc="vim .vimrc"
 
 alias .bashrc="vim .bashrc"
 
+alias getiso="wget -P /home/lo/ISOs -i iso-list.txt"
+
+alias nm="nm-connection-editor"
+
+alias anime="ani-cli"
+
+alias starship.toml="vim .config/starship.toml"
+
+alias pacman.conf="sudo vim /etc/pacman.conf"
+
+#set history format with timestamps
+HISTTIMEFORMAT="%Y-%m-%d %T "
+
+eval "$(starship init bash)"
