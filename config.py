@@ -1,5 +1,5 @@
 from typing import List 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -41,7 +41,7 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod], "Return", lazy.spawn("miniterm"), desc="Terminal Emulator"),
+    Key([mod], "Return", lazy.spawn("alacritty"), desc="Terminal Emulator"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -49,24 +49,26 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     ######   Personal keybindings   #######
     Key([mod], "p", lazy.spawn("xfce4-screenshooter"), desc="screenshot"),
-    Key([mod], "a", lazy.spawn("xfce4-appfinder"), desc="appfinder"),
-    Key([mod], "g", lazy.spawn("gimp"), desc="gimp"),
-    Key([mod], "d", lazy.spawn("darktable"), desc="darktable"),
+    Key([mod], "g", lazy.spawn("gimp"), desc="raster image editor"),
+    Key([mod], "d", lazy.spawn("darktable"), desc="photo editor"),
     Key([mod], "w", lazy.spawn("brave"), desc="web browser"),
-    Key([mod], "o", lazy.spawn("obs"), desc="obs studio"),
-    Key([mod], "v", lazy.spawn("kdenlive"), desc="kdenlive"),
-    Key([mod], "e", lazy.spawn("codium"), desc="codium"),
+
+    Key([mod], "i", lazy.spawn("inkscape"), desc="vector image editor"),
+    Key([mod], "o", lazy.spawn("obs"), desc="streaming"),
+    Key([mod], "v", lazy.spawn("kdenlive"), desc="video editor"),
+    Key([mod], "e", lazy.spawn("codium"), desc="IDE"),
+    Key([mod], "a", lazy.spawn("ardour7"), desc="audio editor"),
+    Key([mod], "l", lazy.spawn("lutris"), desc="game center"),
     Key([mod], "space", lazy.spawn("pavucontrol"), desc="volume control"),
-    Key([mod, "shift"], "e", lazy.spawn("geany"), desc="geany"),
-    Key([mod, "shift"], "s", lazy.spawn("steam"), desc="steam"),
-    Key([mod, "shift"], "a", lazy.spawn("ardour6"), desc="audio editor"),
+    Key([mod, "shift"], "d", lazy.spawn("discord"), desc="chat server"),
+    Key([mod, "shift"], "s", lazy.spawn("steam"), desc="game center"),
+    Key([mod, "shift"], "r", lazy.spawn("rofi -show drun combi -show-icons"), desc="run menu"),
+    Key([mod, "shift"], "q", lazy.spawn("qbittorrent"), desc="bittorrent client"),
     Key([mod, "shift"], "Return", lazy.spawn("pcmanfm"), desc="file manager"),
     ]
-
 
 groups = [Group(i) for i in "123"]
 
@@ -110,7 +112,7 @@ layouts = [
          add_after_last = False,
          master_length = 1
          ),
-     #layout.TreeTab(),
+     layout.TreeTab(),
      #layout.VerticalTile(),
      #layout.Zoomy(),
 ]
@@ -143,7 +145,7 @@ screens = [
                 widget.Sep(linewidth = 2,foreground = "#1597e5"),
                 widget.Sep(linewidth = 2,foreground = "#700b97"),
 
-                widget.TextBox(text = '📡'),
+                widget.TextBox(text = ''),
                 widget.TextBox(foreground = "#700b97",text = 'NET'),
                 #widget.Wlan(foreground = "#700b97"),
                 widget.Net(foreground = "#700b97"),
@@ -152,7 +154,7 @@ screens = [
                 widget.Sep(linewidth = 2,foreground = "#700b97"),
                 widget.Sep(linewidth = 2,foreground = "#1597e5"),
 
-                widget.TextBox(text = '💻'),
+                widget.TextBox(text = ''),
                 widget.CPU(foreground = "#1597e5"),
                 widget.CPUGraph(fill_color = "#700b97",border_color = "#1597e5",graph_color = "#1597e5"),
                 widget.ThermalZone(fgcolor_normal = "1597e5"),
@@ -160,30 +162,22 @@ screens = [
                 widget.Sep(linewidth=2,foreground = "1597e5"),
                 widget.Sep(linewidth=2,foreground = "49a4d4"),
 
-                widget.TextBox(text = '💾'),
+                widget.TextBox(text = ''),
                 widget.TextBox(foreground = "#49a4d4",text = 'DISK'),
-                widget.DF(foreground = "#49a4d4",visible_on_warn = False),
+                #widget.DF(foreground = "#49a4d4",visible_on_warn = False),
                 widget.HDDBusyGraph(fill_color = "#700b97",border_color = "#49a4d4",graph_color = "#49a4d4"),
 
                 widget.Sep(linewidth = 2,foreground="#49a4d4"),
                 widget.Sep(linewidth = 2,foreground="#87e4d6"),
-                widget.TextBox(text = '🕹️'),
+                widget.TextBox(text = ''),
                 widget.TextBox(foreground = "#87e4d6",text = 'RAM'),
                 widget.Memory(foreground = "#87e4d6",measure_mem = 'M'),
                 widget.MemoryGraph(fill_color = "#700b97",border_color = "#87e4d6",graph_color = "#87e4d6"),
-                
+                widget.Sep(linewidth = 2,foreground="#49a4d4"),
 
-                widget.Sep(linewidth = 2,foreground = "#87e4d6"),
-                widget.Sep(linewidth = 2,foreground = "#87e4d6"),
-
-                widget.TextBox(text = '🌡️'),
-                widget.TextBox(foreground = "#49a4d4",text = 'GPU TEMP'),
-                widget.NvidiaSensors(foreground="#49a4d4"),
-                
-                widget.Sep(linewidth = 2,foreground = "#49a4d4"),
-                #widget.Sep(linewidth = 2,foreground = "#87e4d6"),
-
-                #widget.TextBox(text = '🔈')
+                widget.Sep(linewidth = 2,foreground="#ffffff"),
+                widget.Clock(format="%y/%m/%d %H:%M"),
+                widget.Sep(linewidth = 2,foreground="#ffffff"),
 			],
 			24,
         ),
