@@ -16,6 +16,8 @@ set wildmenu
 set termguicolors
 set t_ut=
 syntax on
+colorscheme sorbet 
+let python_highlight_all = 1
 
 "                   Start Plug-ins
 
@@ -23,10 +25,6 @@ call plug#begin('~/.vim/plugged')
 "       Check and fix syntax with LSP support
 Plug 'dense-analysis/ale'
 "       Tab Completion
-Plug 'ackyshake/VimCompletesMe'
-"       Preview colours in source code
-Plug 'ap/vim-css-color'
-"       Syntax Highlighting for server configs
 Plug 'chr4/nginx.vim'
 "       Close pairs
 Plug 'seroqn/tozzy.vim'
@@ -36,6 +34,8 @@ Plug 'preservim/nerdtree'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 "       Debugging
 Plug 'puremourning/vimspector'
+"       Python Syntax Highliting
+Plug 'vitiral/vim-python'
 
 call plug#end()
 
@@ -49,3 +49,4 @@ nnoremap <C-f> :NERDTreeFind<CR>
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd BufWritePost *Xresources,Xdefaults !xrdb %
 autocmd VimEnter * NERDTree | wincmd p
+
