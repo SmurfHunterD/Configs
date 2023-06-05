@@ -29,7 +29,7 @@ alias clean="sudo pacman -Scc"
 
 alias config.py="vim ~/.config/qtile/config.py"
 
-alias .bashrc="vim .bashrc"
+alias .bashrc="vim ~/.bashrc"
 
 alias nm="nm-connection-editor"
 
@@ -37,28 +37,18 @@ alias anime="ani-cli"
 
 alias pacman.conf="sudo vim /etc/pacman.conf"
 
-alias .vimrc="vim .vimrc"
+alias .vimrc="vim ~/.vimrc"
 
-alias xinitrc="sudo vim /etc/X11/xinit/xinitrc"
+alias xinitrc="vim ~/.xinitrc"
 
-alias .Xresources="vim .Xresources"
+alias .Xresources="vim ~/.Xresources"
 
 alias init.lua="vim ~/.config/nvim/init.lua"
 
 #set history format with timestamps
 HISTTIMEFORMAT="%Y-%m-%d %T "
 
-. "$HOME/.cargo/env"
 
 export PATH=$PATH:/usr/bin/pip
 export PATH=$PATH:/home/lo/.local/bin
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi

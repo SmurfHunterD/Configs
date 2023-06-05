@@ -1,4 +1,4 @@
-from typing import List 
+from typing import List
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -56,13 +56,13 @@ keys = [
     Key([mod], "d", lazy.spawn("darktable"), desc="photo editor"),
     Key([mod], "w", lazy.spawn("brave"), desc="web browser"),
 
+    Key([mod], "e", lazy.spawn("codium"), desc="ide"),
     Key([mod], "i", lazy.spawn("inkscape"), desc="vector image editor"),
     Key([mod], "o", lazy.spawn("obs"), desc="streaming"),
     Key([mod], "v", lazy.spawn("kdenlive"), desc="video editor"),
-    Key([mod], "e", lazy.spawn("codium"), desc="IDE"),
     Key([mod], "a", lazy.spawn("ardour7"), desc="audio editor"),
-    Key([mod], "l", lazy.spawn("lutris"), desc="game center"),
     Key([mod], "space", lazy.spawn("pavucontrol"), desc="volume control"),
+    Key([mod, "shift"], "g", lazy.spawn("lutris"), desc="game launcher"),
     Key([mod, "shift"], "d", lazy.spawn("discord"), desc="chat server"),
     Key([mod, "shift"], "s", lazy.spawn("steam"), desc="game center"),
     Key([mod, "shift"], "r", lazy.spawn("rofi -show drun combi -show-icons"), desc="run menu"),
@@ -89,11 +89,11 @@ for i in groups:
 
     ######   Colors   ######
 
-#c1 = "#95E2FF"
-#c2 = "#49A4D4"
-#c3 = "#1597E5"
-#c4 = "#700B97"
-#c5 = "#64C9Cf"
+c1 = "#95E2FF"
+c2 = "#49A4D4"
+c3 = "#1597E5"
+c4 = "#700B97"
+c5 = "#64C9Cf"
 #c6 = "#B7E4D6"
 
 layouts = [
@@ -108,18 +108,19 @@ layouts = [
      #layout.RatioTile(),
      layout.Tile(
          border_width = 5,
-         border_focus = "#700b97",
+         border_focus = c4,
          add_after_last = False,
          master_length = 1
          ),
-     layout.TreeTab(),
+     #layout.TreeTab(),
      #layout.VerticalTile(),
      #layout.Zoomy(),
 ]
 
 widget_defaults = dict(
-    font='Source Code Pro',
-    fontsize=11,
+    font='z003',
+    fontsize=16
+    ,
     padding=1,
 )
 extension_defaults = widget_defaults.copy()
@@ -128,56 +129,60 @@ screens = [
      Screen(
         top = bar.Bar(
 			[
-                widget.Sep(linewidth = 2,foreground = "#95e2ff"),
-                
-                widget.CurrentLayout(foreground = "#95e2ff"),
+                widget.Sep(linewidth = 2,foreground = c1),
 
-                widget.GroupBox(active = "#95e2ff"),
-                
-                widget.Sep(linewidth = 2,foreground = "#95e2ff"),
-                
-                widget.Prompt(foreground = "#49a4d4"),
+                widget.CurrentLayout(foreground = c1),
 
-                widget.Sep(linewidth = 2,foreground = "#49a4d4"),
-                
-                widget.WindowName(foreground = "#1597e5"),
+                widget.GroupBox(active = c1),
 
-                widget.Sep(linewidth = 2,foreground = "#1597e5"),
-                widget.Sep(linewidth = 2,foreground = "#700b97"),
+                widget.Sep(linewidth = 2,foreground = c1),
+
+                widget.Prompt(foreground = c2),
+
+                widget.Sep(linewidth = 2,foreground = c2),
+
+                widget.WindowName(foreground = c3),
+
+                widget.Sep(linewidth = 2,foreground = c3),
+                widget.Sep(linewidth = 2,foreground = c4),
 
                 widget.TextBox(text = ''),
-                widget.TextBox(foreground = "#700b97",text = 'NET'),
+                widget.TextBox(foreground = c4,text = 'NET '),
                 #widget.Wlan(foreground = "#700b97"),
-                widget.Net(foreground = "#700b97"),
-                widget.NetGraph(fill_color = "#1597e5",border_color = "#700b97",graph_color = "#700b97"),
+                widget.Net(foreground = c4),
+                widget.NetGraph(fill_color = c3,border_color = c4,graph_color = c4),
 
-                widget.Sep(linewidth = 2,foreground = "#700b97"),
-                widget.Sep(linewidth = 2,foreground = "#1597e5"),
-
-                widget.TextBox(text = ''),
-                widget.CPU(foreground = "#1597e5"),
-                widget.CPUGraph(fill_color = "#700b97",border_color = "#1597e5",graph_color = "#1597e5"),
-                widget.ThermalZone(fgcolor_normal = "1597e5"),
-
-                widget.Sep(linewidth=2,foreground = "1597e5"),
-                widget.Sep(linewidth=2,foreground = "49a4d4"),
+                widget.Sep(linewidth = 2,foreground = c4),
+                widget.Sep(linewidth = 2,foreground = c3),
 
                 widget.TextBox(text = ''),
-                widget.TextBox(foreground = "#49a4d4",text = 'DISK'),
+                widget.CPU(foreground = c3),
+                widget.CPUGraph(fill_color = c4,border_color = c3,graph_color = c3),
+                widget.ThermalSensor(fgcolor_normal = c3, tag_sensor = "Tctl"),
+
+                widget.Sep(linewidth=2,foreground = c3),
+                widget.Sep(linewidth=2,foreground = c2),
+
+                widget.TextBox(foreground = c2,text = 'DISK '),
                 #widget.DF(foreground = "#49a4d4",visible_on_warn = False),
-                widget.HDDBusyGraph(fill_color = "#700b97",border_color = "#49a4d4",graph_color = "#49a4d4"),
+                widget.HDDBusyGraph(fill_color = c4,border_color = c2,graph_color = c2),
 
-                widget.Sep(linewidth = 2,foreground="#49a4d4"),
-                widget.Sep(linewidth = 2,foreground="#87e4d6"),
+                widget.Sep(linewidth = 2,foreground = c2),
+                widget.Sep(linewidth = 2,foreground = c5),
                 widget.TextBox(text = ''),
-                widget.TextBox(foreground = "#87e4d6",text = 'RAM'),
-                widget.Memory(foreground = "#87e4d6",measure_mem = 'M'),
-                widget.MemoryGraph(fill_color = "#700b97",border_color = "#87e4d6",graph_color = "#87e4d6"),
-                widget.Sep(linewidth = 2,foreground="#49a4d4"),
+                widget.TextBox(foreground = c5,text = 'RAM '),
+                widget.Memory(foreground = c5,measure_mem = 'M'),
+                widget.MemoryGraph(fill_color = c4,border_color = c5,graph_color = c5),
+                widget.Sep(linewidth = 2,foreground = c2),
 
-                widget.Sep(linewidth = 2,foreground="#ffffff"),
-                widget.Clock(format="%y/%m/%d %H:%M"),
-                widget.Sep(linewidth = 2,foreground="#ffffff"),
+                widget.Sep(linewidth = 2,foreground = c2),
+                widget.TextBox(text = 'GPU ', foreground = c5),
+                widget.NvidiaSensors(foreground = c5),
+                widget.Sep(linewidth = 2,foreground = c2),
+
+                widget.Sep(linewidth = 2,foreground = "#ffffff"),
+                widget.Clock(format = "%y/%m/%d %H:%M"),
+                widget.Sep(linewidth = 2,foreground = "#ffffff"),
 			],
 			24,
         ),
