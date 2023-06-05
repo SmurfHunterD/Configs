@@ -55,8 +55,6 @@ keys = [
     Key([mod], "g", lazy.spawn("gimp"), desc="raster image editor"),
     Key([mod], "d", lazy.spawn("darktable"), desc="photo editor"),
     Key([mod], "w", lazy.spawn("brave"), desc="web browser"),
-
-    Key([mod], "e", lazy.spawn("codium"), desc="ide"),
     Key([mod], "i", lazy.spawn("inkscape"), desc="vector image editor"),
     Key([mod], "o", lazy.spawn("obs"), desc="streaming"),
     Key([mod], "v", lazy.spawn("kdenlive"), desc="video editor"),
